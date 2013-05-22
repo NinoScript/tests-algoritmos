@@ -24,14 +24,15 @@ Software
 
 ### Browser
 1. Chrome
+
+	En el inspector, hay que habilitar los source maps!
+
 2. Firefox+firebug
 
 ### Lenguaje
-1. CoffeeScript
+* CoffeeScript
 
-	Este es el lenguaje que quiero ocupar, mientras no pueda configurar el debugger bien con source maps, vamos a ocupar javascript
-
-2. javascript
+	Este es el lenguaje que quiero ocupar, compila a javascript, vamos a estar ocupando node.js si podemos en el BeagleBone Black
 
 ### Librería
 * Processing.js API
