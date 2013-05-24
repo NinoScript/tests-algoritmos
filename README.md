@@ -120,7 +120,7 @@ Preparando el entorno de trabajo
 Según el sistema operativo que ocupen, puede que necesiten instalar cosas
 distintas; pero la idea general es simple:
 
-* Instalar Node.js, este paso incluye NPM (el gestor de packetes de node)
+* Instalar Node.js (este paso incluye NPM, el gestor de packetes de node)
 * Instalar un compilador de CoffeeScript con NPM (este paso incluye cake)
 * Ejecutar el cakefile
 * Abrir el index.html
