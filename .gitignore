@@ -1,2 +1,43 @@
 src/*.js
 src/*.map
+
+# Editores
+###########
+
+## SublimeText
+*.sublime-workspace
+
+## TextMate
+*.tmproj
+*.tmproject
+tmtags
+
+## Vim
+.*.s[a-w][a-z]
+*.un~
+Session.vim
+.netrwhist
+*~
+
+# Sistemas Operativos
+######################
+
+## Mac OS X
+.DS_Store
+.AppleDouble
+.LSOverride
+Icon
+._*
+.Spotlight-V100
+.Trashes
+
+## Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+## Linux
+#.*          # muy extremo, no me gusta
+#!.gitignore # parche de lo anterior
+#*~          # ya está en la parte de Vim
