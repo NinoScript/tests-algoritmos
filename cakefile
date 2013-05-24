@@ -1,0 +1,23 @@
+#fs      = require 'fs'
+{print} = require 'sys'
+{spawn} = require 'child_process'
+
+source_folder = 'src/'
+
+build_options = ['--compile', '--map', source_folder]
+watch_options = ['--watch'].concat build_options
+
+removable     = ['src/*.js', 'src/*.map']
+
+spawner = (spawnee, options) -> #spawn + basic error handling and stuff
+	spawned = spawn spawnee, options
+	spawned.stderr.on 'data', (data) ->
+		process.stderr.write data.toString()
+	spawned.stdout.on 'data', (data) ->
+		print data.toString()
+	spawned
+
+task 'build', 'Build .coffee files in src/', -> spawner 'coffee', build_options
+task 'watch', 'Watch for changes and build', -> spawner 'coffee', watch_options
+task 'open', 'Open index.html', -> spawn 'open', ['index.html']; invoke 'watch'
+#task 'clean', 'Delete generated .js and .map files' -> spawner 'rm', removable
