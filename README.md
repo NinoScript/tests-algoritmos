@@ -1,12 +1,10 @@
 tests-algoritmos
 ================
-
 Aquí vamos a hacer pruebas para los algoritmos para resolver la competencia
 robótica.
 
 Rationale
 ---------
-
 Vamos a conseguir un [BeagleBone Black][BBB], así que ahí
 vamos a tener procesamiento _infinito_ para desperdiciar. Y qué mejor forma de
 desperdiciar procesamiento, que ocupando código interpretado digo yo.
@@ -116,3 +114,82 @@ software que vamos a ocupar
 * [Processing.js API][p5js]
 
 	Nótese que es solo la librería, no el lenguaje completo.
+
+Preparando el entorno de trabajo
+--------------------------------
+Según el sistema operativo que ocupen, puede que necesiten instalar cosas
+distintas; pero la idea general es simple:
+
+* Instalar Node.js, este paso incluye NPM (el gestor de packetes de node)
+* Instalar un compilador de CoffeeScript con NPM (este paso incluye cake)
+* Ejecutar el cakefile
+* Abrir el index.html
+
+### Instalando Node.js
+La parte que más varía, es como instalar [Node.js][node], aunque en verdad
+todos pueden ocupar el método para *Windows*, solo que considero que los otros
+métodos son mejores porque ofrecen actualizaciones automáticas.
+
+#### Mac OS X
+En mac vamos a ocupar el gestor de paquetes [Homebrew][brew] para instalar
+[Node.js][node], es importante **no** ocupar _sudo_ al usarlo y asegurarse
+de que `brew doctor` diga que el sistema está en buenas condiciones.
+
+```Shell
+brew install node
+```
+
+[brew]: http://brew.sh
+
+#### Linux
+En linux vas a ocupar el gestor de paquetes recomendado para tu distro, en el
+caso de Ubuntu este es apt-get
+
+```Shell
+sudo apt-get install node
+```
+
+#### Windows
+Aquí simplemente vamos a bajar un instalador, cosa también funciona en las
+otras plataformas, pero no lo recomiendo porque se pierden las
+actualizaciones.
+
+Para esto vamos a ir a [la página oficial de Node.js][node] y vamos a hacer
+click en Install, debería automáticamente detectar el sistema operativo y
+bajar la versión apropiada para este.
+
+### Instalando [CoffeeScript][coffee]
+Una vez instalado node, de ahora en adelante debería ser todo hermoso!
+
+```Shell
+npm install -g coffee-script
+cd a/la/carpeta/del/proyecto
+cake build
+```
+
+Ahora que todo funcionó, es importante que revises las otras tareas que tiene
+el _cakefile_, esto es fácil, solo tienes que escribir `cake` solo.
+
+### Troubleshooting
+Obviamente el mundo no es perfecto y todo falló xD, veamos que se puede hacer…
+
+#### Mac OS X
+Nada debiese haber fallado, revisa tu instalación de HomeBrew, ejecuta `brew
+doctor`, actualiza el sistema, arregla las cosas. Si aún así no funciona, me
+avisas.
+
+#### Windows
+Puede que haya fallado mi cakefile, es un error conocido, por ahora vas a
+tener que ocupar el siguiente comando para compilar:
+
+```Shell
+coffee --watch --compile --map src
+```
+
+Por favor recuérdame revisar y arreglar esto.
+Gracias Karen por encontrar este bug.
+
+#### Linux
+Corre en círculos, rueda, llora y luego me avisas. Los consejos para los otros
+sistemas operativos pueden ser aplicables, es decir: actualiza todo, compila a
+mano si el error es en el cakefile.

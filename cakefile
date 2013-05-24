@@ -2,12 +2,12 @@
 {print} = require 'sys'
 {spawn} = require 'child_process'
 
-source_folder = 'src/'
+source_folder = 'src'
 
 build_options = ['--compile', '--map', source_folder]
 watch_options = ['--watch'].concat build_options
 
-removable     = ['src/*.js', 'src/*.map']
+# removable     = ['src/*.js', 'src/*.map']
 
 spawner = (spawnee, options) -> #spawn + basic error handling and stuff
 	spawned = spawn spawnee, options
