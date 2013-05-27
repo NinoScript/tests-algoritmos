@@ -1,23 +1,19 @@
-sketch = (p) ->
-  p.setup = () ->
-    p.size($(window).width(), $(window).height())
-    p.background(0)
-    @beans = []
+sketch = (p)->
+	p.world_scale = Math.min $(window).width()/6, $(window).height()/4 #estoy hay que hacerlo con una matriz de transformación
+	p.setup = ->
+		# sketch setup
+		p.size $(window).width(), $(window).height()
+		p.background 0
 
-  p.draw = () ->
-    x_off = p.frameCount * 0.0003
-    y_off = x_off + 20
+		# environment setup
+		@grid = new Grid p
+		@robot = new Robot p, 2.3, 0.8
+		@algorithm = new Algorithm @robot
 
-    x = p.noise(x_off) * p.width
-    y = p.noise(y_off) * p.height
+	p.draw = ->
+		p.background 0
 
-    if p.frameCount % 8 == 0
-      bean = new Algorithm(p, {
-        x: x
-        y: y
-        x_off: x_off
-        y_off: y_off
-      })
-      @beans.push(bean)
-
-    bean.draw() for bean in @beans
+		@grid.draw()
+		@robot.draw()
+		sensors = @grid.sense @robot.sensor_positions()
+		@algorithm.update(sensors)

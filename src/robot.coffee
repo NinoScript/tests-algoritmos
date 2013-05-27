@@ -1,35 +1,27 @@
 class Robot
-  constructor: (@p, opts) ->
-    @x = opts.x
-    @y = opts.y
+	constructor: (@p, x=0, y=0, theta=0)->
+		@pos = new Vector x, y
+		@dir = new Vector 1, 0
+		# @dir.rotateZ(theta)
+		
+	draw: ()->
+		from = @pos.get()
+		from.mult(p.world_scale)
 
-    @x_off = opts.x_off
-    @y_off = opts.y_off
+		to = @dir.get()
+		to.mult(10)
+		to.add(from)
 
-    @vel = opts.vel || 3
-    @accel = opts.accel || -0.003
+		@p.stroke 255
+		@p.line from.x, from.y, to.x, to.y
 
-  draw: () ->
-    return unless @vel > 0
+	move: (distance)->
+		movement = @dir.get()
+		movement.mult(distance)
+		@pos.add movement
 
-    @x_off += 0.0007
-    @y_off += 0.0007
+	rotate: (theta)->
+		@dir.rotateZ theta
 
-    @vel += @accel
-
-    @x += @p.noise(@x_off) * @vel - @vel/2
-    @y += @p.noise(@y_off) * @vel - @vel/2
-
-    @set_color()
-    @p.point(@x, @y)
-
-
-  set_color: () ->
-    @p.colorMode(@p.HSB, 360, 100, 100)
-
-    h = @p.noise((@x_off+@y_off)/2)*360
-    s = 100
-    b = 100
-    a = 4
-
-    @p.stroke(h, s, b, a)
+	sensor_positions: ()->
+		[]

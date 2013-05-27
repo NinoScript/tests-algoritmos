@@ -3,7 +3,7 @@ class Vector
 	y: 0
 	z: 0
 
-	constructor: (x,y,z)-> @set x, y, z
+	constructor: (x=0,y=0,z=0)-> @set x, y, z
 	
 	add: (v)->
 		@x += v.x
@@ -40,6 +40,7 @@ class Vector
 	mag: -> Math.sqrt @x * @x + @y * @y + @z * @z
 
 	mult: (v)->
+		v = new Vector v, v, v if typeof v is 'number'
 		@x *= v.x
 		@y *= v.y
 		@z *= v.z
@@ -48,7 +49,7 @@ class Vector
 			m = @mag()
 			@div m if m > 0
 
-	set: (x, y, z)-> [ @x, @y, @z ] = [ x, y, z ]
+	set: (x, y, z=0)-> [ @x, @y, @z ] = [ x, y, z ]
 
 	sub: (v)->
 		@x -= v.z
@@ -58,6 +59,13 @@ class Vector
 	toArray: -> [@x, @y, @z]
 
 	toString: -> "x:@x, y:@y, z:@z"
+
+	rotateZ: (theta)->
+		cos = Math.cos theta
+		sin = Math.sin theta
+		px = @x * cos - @y * sin
+		py = @x * sin + @y * cos
+		@set px, py, @z
 	
 	@dist = (v1, v2)-> v1.dist v2
 
