@@ -1,4 +1,4 @@
-coffee_draw = (p) ->
+sketch = (p) ->
   p.setup = () ->
     p.size($(window).width(), $(window).height())
     p.background(0)
@@ -12,7 +12,7 @@ coffee_draw = (p) ->
     y = p.noise(y_off) * p.height
 
     if p.frameCount % 8 == 0
-      bean = new Bean(p, {
+      bean = new Algorithm(p, {
         x: x
         y: y
         x_off: x_off
@@ -21,7 +21,3 @@ coffee_draw = (p) ->
       @beans.push(bean)
 
     bean.draw() for bean in @beans
-
-$ ->
-  canvas = $("#processing")[0]
-  processing = new Processing(canvas, coffee_draw)

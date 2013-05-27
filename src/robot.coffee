@@ -1,4 +1,4 @@
-class Bean
+class Robot
   constructor: (@p, opts) ->
     @x = opts.x
     @y = opts.y
