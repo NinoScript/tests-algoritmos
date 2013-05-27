@@ -189,7 +189,7 @@ Puede que haya fallado mi cakefile, es un error conocido, por ahora vas a
 tener que ocupar el siguiente comando para compilar:
 
 ```Shell
-coffee --watch --compile --map src
+coffee --bare --watch --compile --map src
 ```
 
 Por favor recuérdame revisar y arreglar esto.

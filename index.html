@@ -2,6 +2,13 @@
 
 <html>
 	<head>
+		<!-- no default margins or paddings -->
+		<style>
+		* {
+			margin :0;
+			padding:0;
+		}
+		</style>
 		<!-- load libs -->
 		<script src=lib/processing-1.4.1-api.js></script>
 		<script src=lib/jquery-2.0.0.js></script>
@@ -9,5 +16,6 @@
 	<body>
 		<canvas id='processing'>
 		<script src=src/algoritmo.js></script>
+		<script src=src/bean.js></script>
 	</body>
 </html>

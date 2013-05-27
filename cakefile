@@ -4,7 +4,7 @@
 
 source_folder = 'src'
 
-build_options = ['--compile', '--map', source_folder]
+build_options = ['--bare', '--compile', '--map', source_folder]
 watch_options = ['--watch'].concat build_options
 
 # removable     = ['src/*.js', 'src/*.map']
