@@ -3,6 +3,7 @@
 {spawn} = require 'child_process'
 
 source_folder = 'src'
+compiler = 'coffee'
 
 build_options = ['--bare', '--compile', '--map', source_folder]
 watch_options = ['--watch'].concat build_options
@@ -17,7 +18,7 @@ spawner = (spawnee, options) -> #spawn + basic error handling and stuff
 		print data.toString()
 	spawned
 
-task 'build', 'Build .coffee files in src/', -> spawner 'coffee', build_options
-task 'watch', 'Watch for changes and build', -> spawner 'coffee', watch_options
+task 'build', 'Build .coffee files in src/', -> spawner compiler, build_options
+task 'watch', 'Watch for changes and build', -> spawner compiler, watch_options
 task 'open', 'Open index.html', -> spawn 'open', ['index.html']; invoke 'watch'
 #task 'clean', 'Delete generated .js and .map files' -> spawner 'rm', removable
