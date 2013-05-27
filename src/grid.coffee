@@ -2,6 +2,8 @@ class Grid
 	constructor: (@p)->
 		@HEIGHT = 3
 		@WIDTH  = 5
+		# esto es solo pa aprovechar la pantalla
+		@p.world_scale = -2 + Math.floor (Math.min $(window).width() / @WIDTH, $(window).height() / @HEIGHT)
 	draw: ->
 		s = p.world_scale
 		@p.stroke 200

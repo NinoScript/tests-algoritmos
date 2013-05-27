@@ -1,5 +1,5 @@
 sketch = (p)->
-	p.world_scale = Math.min $(window).width()/6, $(window).height()/4 #estoy hay que hacerlo con una matriz de transformación
+	p.world_scale = 100
 	p.setup = ->
 		# sketch setup
 		p.size $(window).width(), $(window).height()
@@ -11,6 +11,7 @@ sketch = (p)->
 		@algorithm = new Algorithm @robot
 
 	p.draw = ->
+		p.translate 1, 1 # un pequeño margen pa que no se vea feo
 		p.background 0
 
 		@grid.draw()
