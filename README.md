@@ -135,8 +135,14 @@ En mac vamos a ocupar el gestor de paquetes [Homebrew][brew] para instalar
 [Node.js][node], es importante **no** ocupar _sudo_ al usarlo y asegurarse
 de que `brew doctor` diga que el sistema está en buenas condiciones.
 
+Homebrew, luego de instalar node, te aconsejará anteponer el path donde quedan
+los binarios de los packetes que instales con npm a tu variable de entorno
+PATH, pondré un ejemplo de como hacer esto en Bash, aunque yo personalmente
+ocupo Fish.
+
 ```Shell
 brew install node
+echo "export PATH=/usr/local/share/npm/bin:$PATH" >> ~/.bash_profile
 ```
 
 [brew]: http://brew.sh
