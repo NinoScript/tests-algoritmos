@@ -2,5 +2,9 @@ class Algorithm
 	constructor: (@robot) ->
 
 	update: (sensors)->
-		@robot.rotate(0.02)
-		@robot.move(0.01)
+		if not sensors[2]
+			@robot.rotate(0.05)
+		else
+			if sensors[0]
+				@robot.rotate(-0.07)
+			@robot.move(0.03)
